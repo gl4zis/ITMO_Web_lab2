@@ -1,20 +1,14 @@
-import {addIncorrectRow, addTableRow, fillTableFromLocal, resetTable} from "./table.js"
+import {addIncorrectRow, addTableRow,} from "./table.js"
 import {paintGraph, paintNewDot} from "./canvas.js"
 
-document.getElementById('reset').onclick = function () {
-    resetTable()
-    paintGraph()
-}
-window.onload = function () {
-    paintGraph()
-    fillTableFromLocal()
-}
+window.onload = paintGraph
 
 export function submit(x, y, r) {
-    superagent
+    console.log('Sending: x-' + x + ' y-' + y + ' r-' + r)
+   /* superagent
         .get("script.php")
         .query({"X": +Number(x).toFixed(4), "Y": +Number(y).toFixed(4), "R": r})
-        .then(processResponse)
+        .then(processResponse)*/
 }
 
 function processResponse(response) {

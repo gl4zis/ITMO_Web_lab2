@@ -1,6 +1,6 @@
 import {submit} from "./main.js"
-import {validatePoint, validateR} from "./validation.js";
-import {addIncorrectRow} from "./table.js";
+import {validatePoint, isRValid} from "./validation.js";
+import {validationError} from "./form.js";
 
 const cv = document.getElementById("canvas")
 const ctx = cv.getContext('2d')
@@ -10,7 +10,7 @@ const w = h
 const R = w * 0.4
 
 cv.onclick = sendClickCoords
-rField.oninput = paintGraph
+rField.addEventListener('input', paintGraph)
 
 export function paintGraph() {
     ctx.clearRect(0, 0, w, h)
@@ -44,8 +44,8 @@ export function paintGraph() {
     ctx.lineTo(w / 2 - fontSize / 2, h / 2 - R / 2)
     ctx.stroke()
 
-    const rValue = rField.value
-    if (validateR()) {
+    const rValue = parseFloat(rField.value.replace(',', '.'))
+    if (isRValid()) {
         ctx.beginPath()
         ctx.arc(w / 2, h / 2, R / 2, Math.PI, 3 * Math.PI / 2)
         ctx.lineTo(w / 2, h / 2)
@@ -68,15 +68,13 @@ export function paintGraph() {
         ctx.fillText(-rValue / 2, w / 2 - R / 2 - textWidth/2, h / 2 - fontSize)
         ctx.stroke()
     }
-
-    setHitsFromLocal()
 }
 
 export function paintNewDot({x, y, hit}) {
     if (hit === 'NO')
-        ctx.fillStyle = '#FF0000'
+        ctx.fillStyle = '#F00'
     else
-        ctx.fillStyle = '#00FF00'
+        ctx.fillStyle = '#0F0'
 
     const rValue = rField.value
     const xCenter = w/2 + (R * x / rValue)
@@ -99,12 +97,5 @@ function processClick(x, y) {
     if (validatePoint(x, y))
         submit(x, y, rField.value)
     else
-        addIncorrectRow('Validation failed!')
-}
-
-function setHitsFromLocal() {
-    for (let i = 1; i <= localStorage.length; i++) {
-        const row = JSON.parse(localStorage.getItem(i))
-        paintNewDot({x: row.x, y: row.y, hit: row.hit})
-    }
+        validationError(false)
 }

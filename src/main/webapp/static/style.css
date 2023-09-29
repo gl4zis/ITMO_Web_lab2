@@ -50,11 +50,16 @@ table.form-table {
     border-spacing: 20px;
 }
 
-table.form-table td:not(.zone) {
+table.form-table td:not(.button) {
     background: #101010AA;
     border-radius: 30px;
     padding: 2%;
     text-align: center;
+}
+
+table.form-table td.button {
+    text-align: center;
+    vertical-align: bottom;
 }
 
 .form {
@@ -105,8 +110,16 @@ input {
     outline: none;
 }
 
-input#y {
+input#y.wrong, input#r.wrong {
+    border: 4px solid #F00;
+}
+
+input#y.right, input#r.right {
     border: 4px solid #0F0;
+}
+
+input#y.no-border, input#r.no-border {
+    border: 3px solid #CCC;
 }
 
 table.results {
