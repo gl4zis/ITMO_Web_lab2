@@ -1,5 +1,5 @@
 import {submit} from "./main.js"
-import {validatePoint} from "./validation.js";
+import {validatePoint, validateR} from "./validation.js";
 import {addIncorrectRow} from "./table.js";
 
 const cv = document.getElementById("canvas")
@@ -10,23 +10,13 @@ const w = h
 const R = w * 0.4
 
 cv.onclick = sendClickCoords
-rField.onchange = paintGraph
+rField.oninput = paintGraph
 
 export function paintGraph() {
     ctx.clearRect(0, 0, w, h)
 
     ctx.strokeStyle = '#CCCCCC'
     ctx.fillStyle = '#00BFFF88'
-    ctx.fillRect(w / 2 - R, h / 2 - R / 2, R, R / 2)
-    ctx.beginPath()
-    ctx.moveTo(w / 2, h / 2 - R / 2)
-    ctx.lineTo(w / 2 + R / 2, h / 2)
-    ctx.lineTo(w / 2, h / 2)
-    ctx.fill()
-    ctx.beginPath()
-    ctx.arc(w / 2, h / 2, R, 0, Math.PI / 2)
-    ctx.lineTo(w / 2, h / 2)
-    ctx.fill()
 
     ctx.beginPath()
     ctx.moveTo(0, h / 2)
@@ -40,41 +30,54 @@ export function paintGraph() {
     ctx.moveTo(w / 2, 0)
     ctx.lineTo(w * (11 / 20), h * (1 / 20))
 
-    ctx.moveTo(w / 2 - R, h / 2 - 5)
-    ctx.lineTo(w / 2 - R, h / 2 + 5)
-    ctx.moveTo(w / 2 + R, h / 2 - 5)
-    ctx.lineTo(w / 2 + R, h / 2 + 5)
-    ctx.moveTo(w / 2 + R / 2, h / 2 - 5)
-    ctx.lineTo(w / 2 + R / 2, h / 2 + 5)
-    ctx.moveTo(w / 2 + 5, h / 2 + R)
-    ctx.lineTo(w / 2 - 5, h / 2 + R)
-    ctx.moveTo(w / 2 + 5, h / 2 - R / 2)
-    ctx.lineTo(w / 2 - 5, h / 2 - R / 2)
+    const fontSize = w / 25
+
+    ctx.moveTo(w / 2 - R, h / 2 - fontSize / 2)
+    ctx.lineTo(w / 2 - R, h / 2 + fontSize / 2)
+    ctx.moveTo(w / 2 - R / 2, h / 2 - fontSize / 2)
+    ctx.lineTo(w / 2 - R / 2, h / 2 + fontSize / 2)
+    ctx.moveTo(w / 2 + R / 2, h / 2 - fontSize / 2)
+    ctx.lineTo(w / 2 + R / 2, h / 2 + fontSize / 2)
+    ctx.moveTo(w / 2 + fontSize / 2, h / 2 + R / 2)
+    ctx.lineTo(w / 2 - fontSize / 2, h / 2 + R / 2)
+    ctx.moveTo(w / 2 + fontSize / 2, h / 2 - R / 2)
+    ctx.lineTo(w / 2 - fontSize / 2, h / 2 - R / 2)
+    ctx.stroke()
 
     const rValue = rField.value
-    const fontSize = w / 30
+    if (validateR()) {
+        ctx.beginPath()
+        ctx.arc(w / 2, h / 2, R / 2, Math.PI, 3 * Math.PI / 2)
+        ctx.lineTo(w / 2, h / 2)
+        ctx.fill()
 
-    ctx.fillStyle = '#CCCCCC'
-    ctx.font = 'bold ' + fontSize + 'pt Arial'
-    ctx.fillText(rValue, w / 2 + R - fontSize / 2, h / 2 - fontSize / 2)
-    ctx.fillText(-rValue, w / 2 - R - fontSize, h / 2 - fontSize / 2)
-    ctx.fillText(-rValue, w / 2 + fontSize / 2, h / 2 + R + fontSize / 2)
-    ctx.fillText(rValue/2, w / 2 + fontSize / 2, h / 2 - R / 2 + fontSize / 2)
-    ctx.fillText(rValue/2, w / 2 + R / 2 - fontSize, h / 2 - fontSize / 2)
+        ctx.fillRect(w / 2 - R, h / 2, R, R / 2)
+        ctx.beginPath()
+        ctx.moveTo(w / 2 + R / 2, h / 2)
+        ctx.lineTo(w / 2, h / 2)
+        ctx.lineTo(w / 2, h / 2 + R / 2)
+        ctx.fill()
 
-    ctx.stroke()
+        ctx.fillStyle = '#CCCCCC'
+        ctx.font = 'bold ' + fontSize + 'pt Arial'
+        const textWidth = ctx.measureText(rValue).width;
+        ctx.fillText(-rValue, w / 2 - R - textWidth/2, h / 2 - fontSize)
+        ctx.fillText(rValue / 2, w / 2 + fontSize, h / 2 - R / 2 + fontSize/2)
+        ctx.fillText(rValue / 2, w / 2 + R / 2 - textWidth/2, h / 2 - fontSize)
+        ctx.fillText(-rValue / 2, w / 2 + fontSize, h / 2 + R / 2 + fontSize/2)
+        ctx.fillText(-rValue / 2, w / 2 - R / 2 - textWidth/2, h / 2 - fontSize)
+        ctx.stroke()
+    }
 
     setHitsFromLocal()
 }
 
 export function paintNewDot({x, y, hit}) {
-    switch (hit) {
-        case "NO":
-            ctx.fillStyle = '#FF0000'
-            break
-        case "YES":
-            ctx.fillStyle = '#00FF00'
-    }
+    if (hit === 'NO')
+        ctx.fillStyle = '#FF0000'
+    else
+        ctx.fillStyle = '#00FF00'
+
     const rValue = rField.value
     const xCenter = w/2 + (R * x / rValue)
     const yCenter = h/2 - (R * y / rValue)

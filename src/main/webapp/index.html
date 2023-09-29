@@ -9,7 +9,7 @@
     <script src="./js/form.js" type="module"></script>
     <link href="./static/style.css" rel="stylesheet"/>
     <meta charset="UTF-8">
-    <title>LaboratoryWork1</title>
+    <title>LaboratoryWork2</title>
 </head>
 <body>
     <table id="main">
@@ -34,19 +34,14 @@
                             <td colspan="2">
                                 <label for="y">Type Y:</label>
                                 <br>
-                                <input type="text" name="Y" id="y" required value="0"
-                                       placeholder="-5...3"/>
+                                <input type="text" name="Y" id="y" required
+                                       placeholder="-3...3"/>
                             </td>
                             <td colspan="2">
-                                <label for="r">Select R:</label>
+                                <label for="r">Type R:</label>
                                 <br>
-                                <select name="R" id="r" >
-                                    <option value="1">1</option>
-                                    <option value="1.5">1.5</option>
-                                    <option value="2" selected>2</option>
-                                    <option value="2.5">2.5</option>
-                                    <option value="3">3</option>
-                                </select>
+                                <input type="text" name="R" id="r" required
+                                       placeholder="1...4"/>
                             </td>
                             <td class="zone" rowspan="2">
                                 <table class="form-table">
@@ -68,31 +63,19 @@
                         </tr>
                         <tr>
                             <td colspan="3">
-                                    <p>Choose X:</p>
-                                    <input type="radio" name="X" id="-2"
-                                           value="-2"/>
-                                    <label for="-2">-2</label>
-                                    <input type="radio" name="X" id="-1"
-                                           value="-1"/>
-                                    <label for="-1">-1</label>
-                                    <input type="radio" name="X" id="0"
-                                           value="0" checked/>
-                                    <label for="0">0</label>
-                                    <input type="radio" name="X" id="1"
-                                           value="1"/>
-                                    <label for="1">1</label>
-                                    <input type="radio" name="X" id="2"
-                                           value="2"/>
-                                    <label for="2">2</label>
-                                    <input type="radio" name="X" id="3"
-                                           value="3"/>
-                                    <label for="3">3</label>
-                                    <input type="radio" name="X" id="4"
-                                           value="4"/>
-                                    <label for="4">4</label>
-                                    <input type="radio" name="X" id="5"
-                                           value="5"/>
-                                    <label for="5">5</label>
+                                <label for="x">Select X:</label>
+                                <br>
+                                <select name="X" id="x" >
+                                    <option value="-4">-4</option>
+                                    <option value="-3">-3</option>
+                                    <option value="-2">-2</option>
+                                    <option value="-1">-1</option>
+                                    <option value="0" selected>0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
                             </td>
                         </tr>
                     </table>

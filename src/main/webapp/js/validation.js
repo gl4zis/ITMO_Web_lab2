@@ -1,18 +1,24 @@
+const rField = document.getElementById('r')
 const yField = document.getElementById('y')
-const submitButton = document.getElementById('submit')
-const regex = /^-?\d([\.,]\d{1,4})?$/
+const numberRegex = /^-?\d([\.,]\d{1,2})?$/
 
-yField.oninput = function () {
-    const y = parseFloat(yField.value.replace(',', '.'))
-    if (!regex.test(yField.value) || y < -5 || y > 3) {
-        yField.style.borderColor = '#FF0000'
-        submitButton.disabled = true
-    } else {
-        yField.style.borderColor = '#00FF00'
-        submitButton.disabled = false
-    }
-}
+rField.oninput = validateR
+yField.oninput = validateY
 
 export function validatePoint(x, y) {
     return !(y < -5 || y > 3 || x < -2 || x > 5);
+}
+
+export function validateR() {
+    const rValue = rField.value
+    return numberRegex.test(rValue) && Number(rValue) >= 1 && Number(rValue) <= 4
+}
+
+function validateY() {
+    const yValue = yField.value
+    return numberRegex.test(yValue) && Number(yValue) >= -3 && Number(yValue) <= 3
+}
+
+function isValid() {
+    return validateR() && validateY()
 }
