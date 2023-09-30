@@ -1,5 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-
+<%@ page import="model.Row" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<jsp:useBean id="table" class="model.Table" scope="session"/>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -31,7 +32,7 @@
         </tr>
         <tr>
             <td>
-                <form action="action=${pageContext.request.contextPath}/main" method="get">
+                <form action="" method="get">
                     <table class="mh-center form-table container">
                         <tr>
                             <td>
@@ -80,12 +81,11 @@
             <td>
                 <table id="res-table" class="results mh-center">
                     <tr>
-                        <th colspan="7">
+                        <th colspan="6">
                             <h3>Results:</h3>
                         </th>
                     </tr>
                     <tr>
-                        <td>№</td>
                         <td>X</td>
                         <td>Y</td>
                         <td>R</td>
@@ -93,6 +93,20 @@
                         <td>Time</td>
                         <td>Time of work</td>
                     </tr>
+                    <%
+                        for (Row row : table) {
+                    %>
+                    <tr>
+                        <td><%= row.x()%></td>
+                        <td><%= row.y()%></td>
+                        <td><%= row.r()%></td>
+                        <td><%= row.hit()%></td>
+                        <td><%= row.formattedDate()%></td>
+                        <td><%= row.time()%>ms</td>
+                    </tr>
+                    <%
+                        }
+                    %>
                 </table>
             </td>
         </tr>

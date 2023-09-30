@@ -8,17 +8,23 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "controllerServlet", value = "/main")
+@WebServlet(name = "controllerServlet", value = "")
 public class ControllerServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         resp.setContentType("text/html");
+        if (isPointSet(req))
+            req.getRequestDispatcher("/areaCheck").forward(req, resp);
+        //else if (Boolean.parseBoolean(req.getParameter("delete")))
+            //reset table
+        else
+            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+    }
+
+    private boolean isPointSet(HttpServletRequest req) {
         String x = req.getParameter("X");
         String y = req.getParameter("Y");
         String r = req.getParameter("R");
-        if (x != null && y != null && r != null)
-            req.getRequestDispatcher("/areaCheck").forward(req, resp);
-        else
-            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+        return x != null && y != null && r != null;
     }
 }
