@@ -31,47 +31,49 @@
         </tr>
         <tr>
             <td>
-                <table class="mh-center form-table container">
-                    <tr>
-                        <td>
-                            <label for="y">Type Y:</label>
-                            <br>
-                            <input class="wrong" type="text" name="Y" id="y" required
-                                   placeholder="-3...3"/>
-                        </td>
-                        <td>
-                            <label for="r">Type R:</label>
-                            <br>
-                            <input class="wrong" type="text" name="R" id="r" required
-                                   placeholder="1...4"/>
-                        </td>
-                        <td rowspan="2">
-                            <canvas id="canvas" height="250px" width="250px">
-                                Something wrong
-                            </canvas>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="x">Select X:</label>
-                            <br>
-                            <select name="X" id="x" >
-                                <option value="-4">-4</option>
-                                <option value="-3">-3</option>
-                                <option value="-2">-2</option>
-                                <option value="-1">-1</option>
-                                <option value="0" selected>0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </td>
-                        <td class="button">
-                            <button class="mv-center" id="submit" type="submit">Submit</button>
-                        </td>
-                    </tr>
-                </table>
+                <form action="action=${pageContext.request.contextPath}/main" method="get">
+                    <table class="mh-center form-table container">
+                        <tr>
+                            <td>
+                                <label for="y">Type Y:</label>
+                                <br>
+                                <input class="wrong" type="text" name="Y" id="y" required
+                                       placeholder="-3...3"/>
+                            </td>
+                            <td>
+                                <label for="r">Type R:</label>
+                                <br>
+                                <input class="wrong" type="text" name="R" id="r" required
+                                       placeholder="1...4"/>
+                            </td>
+                            <td rowspan="2">
+                                <canvas id="canvas" height="250px" width="250px">
+                                    Something wrong
+                                </canvas>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="x">Select X:</label>
+                                <br>
+                                <select name="X" id="x" >
+                                    <option value="-4">-4</option>
+                                    <option value="-3">-3</option>
+                                    <option value="-2">-2</option>
+                                    <option value="-1">-1</option>
+                                    <option value="0" selected>0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </td>
+                            <td class="button">
+                                <button class="mv-center" id="submit" type="submit">Submit</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
             </td>
         </tr>
         <tr>
