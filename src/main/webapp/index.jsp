@@ -1,5 +1,5 @@
 <%@ page import="model.Row" %>
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <jsp:useBean id="table" class="model.Table" scope="session"/>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
@@ -38,13 +38,13 @@
                             <td>
                                 <label for="y">Type Y:</label>
                                 <br>
-                                <input class="wrong" type="text" name="Y" id="y" required
+                                <input class="wrong" type="text" name="Y" id="y"
                                        placeholder="-3...3"/>
                             </td>
                             <td>
                                 <label for="r">Type R:</label>
                                 <br>
-                                <input class="right" type="text" name="R" id="r" value="1" required
+                                <input class="right" type="text" name="R" id="r" value="1"
                                        placeholder="1...4"/>
                             </td>
                             <td rowspan="2">

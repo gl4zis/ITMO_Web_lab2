@@ -5,7 +5,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 
 @WebServlet(name = "controllerServlet", value = "")
@@ -15,9 +14,10 @@ public class ControllerServlet extends HttpServlet {
         resp.setContentType("text/html");
         if (isPointSet(req))
             req.getRequestDispatcher("/areaCheck").forward(req, resp);
-        //else if (Boolean.parseBoolean(req.getParameter("delete")))
-            //reset table
-        else
+        else if (Boolean.parseBoolean(req.getParameter("delete"))) {
+            req.getSession().removeAttribute("table");
+            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+        } else
             req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 

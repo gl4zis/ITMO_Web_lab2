@@ -1,5 +1,3 @@
-"use strict";
-
 import {validatePoint, isRValid, validationError} from "./validation.js";
 
 const cv = document.getElementById("canvas")

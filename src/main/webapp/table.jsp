@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <jsp:useBean id="row" class="model.Row" scope="request"/>
 <jsp:useBean id="table" class="model.Table" scope="session"/>
 <jsp:setProperty name="table" property="newRow" value="${row}"/>
