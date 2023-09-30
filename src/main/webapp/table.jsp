@@ -36,7 +36,7 @@
             </td>
         </tr>
         <tr>
-            <td class="reset">
+            <td>
                 <form action="" method="get">
                     <button id="back" type="submit" class="mh-center">Go Back</button>
                 </form>

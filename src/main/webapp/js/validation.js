@@ -5,6 +5,13 @@ const numberRegex = /^-?\d([\.,]\d{1,2})?$/
 rField.addEventListener('input', validateR)
 yField.addEventListener('input', validateY)
 
+document.getElementById('submit-form').addEventListener('submit', function (event) {
+    if (!isValid()) {
+        validationError(true)
+        event.preventDefault()
+    }
+})
+
 function validateR() {
     if (isRValid())
         rField.className = 'right'
@@ -28,11 +35,30 @@ export function isRValid() {
     return numberRegex.test(rField.value) && rValue >= 1 && rValue <= 4
 }
 
-export function isYValid() {
+function isYValid() {
     const yValue = parseFloat(yField.value.replace(',', '.'))
     return numberRegex.test(yField.value) && yValue >= -3 && yValue <= 3
 }
 
-export function isValid() {
+function isValid() {
     return isRValid() && isYValid()
+}
+
+export function validationError(needBlinkY) {
+    if (!isRValid())
+        borderBlink(document.getElementById('r'))
+    if (needBlinkY && !isYValid())
+        borderBlink(document.getElementById('y'))
+}
+
+function borderBlink(field) {
+    const oldClass = field.className
+    for (let i = 1; i <= 6; i++) {
+        if (i % 2 === 1)
+            setTimeout(function () {field.className = 'no-border'}, i*200)
+        else
+            setTimeout(function () {field.className = oldClass}, i*200)
+    }
+    validateR()
+    validateY()
 }

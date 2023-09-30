@@ -1,3 +1,4 @@
+/*
 import {addIncorrectRow, addTableRow,} from "./table.js"
 import {paintGraph, paintNewDot} from "./canvas.js"
 
@@ -5,10 +6,10 @@ window.onload = paintGraph
 
 export function submit(x, y, r) {
     console.log('Sending: x-' + x + ' y-' + y + ' r-' + r)
-   /* superagent
+   /!* superagent
         .get("script.php")
         .query({"X": +Number(x).toFixed(4), "Y": +Number(y).toFixed(4), "R": r})
-        .then(processResponse)*/
+        .then(processResponse)*!/
 }
 
 function processResponse(response) {
@@ -36,4 +37,4 @@ function addHit(htmlTable) {
         addTableRow(row)
         paintNewDot({x: row.x, y: row.y, hit: row.hit})
     }
-}
+}*/

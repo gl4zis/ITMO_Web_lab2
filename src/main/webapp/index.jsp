@@ -8,8 +8,8 @@
     <script src="./js_modules/three.r134.min.js"></script>
     <script src="./js_modules/vanta.net.min.js"></script>
     <script src="./js_modules/myVanta.js" defer></script>
-    <script src="./js/main.js" type="module"></script>
-    <script src="./js/form.js" type="module"></script>
+    <script src="./js/canvas.js" type="module"></script>
+    <script src="./js/table.js" type="module"></script>
     <link href="./static/style.css" rel="stylesheet"/>
     <meta charset="UTF-8">
     <title>LaboratoryWork2</title>
@@ -32,7 +32,7 @@
         </tr>
         <tr>
             <td>
-                <form action="" method="get">
+                <form id="submit-form" action="" method="get">
                     <table class="mh-center form-table container">
                         <tr>
                             <td>
@@ -44,7 +44,7 @@
                             <td>
                                 <label for="r">Type R:</label>
                                 <br>
-                                <input class="wrong" type="text" name="R" id="r" required
+                                <input class="right" type="text" name="R" id="r" value="1" required
                                        placeholder="1...4"/>
                             </td>
                             <td rowspan="2">
