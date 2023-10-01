@@ -1,15 +1,9 @@
-<%@ page import="model.Row" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
-<jsp:useBean id="newRow" class="model.Row" scope="request"/>
+<jsp:useBean id="row" class="model.Row" scope="request"/>
 <jsp:useBean id="table" class="model.Table" scope="session"/>
-<jsp:setProperty name="table" property="newRow" value="${newRow}"/>
+<jsp:setProperty name="table" property="newRow" value="${row}"/>
 <table>
-    <%
-        for (int i = 0; i < table.size(); i++) {
-            Row row = table.get(i);
-    %>
     <tr>
-        <td><%= i+1%></td>
         <td><%= row.x()%></td>
         <td><%= row.y()%></td>
         <td><%= row.r()%></td>
@@ -17,7 +11,4 @@
         <td><%= row.formattedDate()%></td>
         <td><%= row.time()%>ms</td>
     </tr>
-    <%
-        }
-    %>
 </table>

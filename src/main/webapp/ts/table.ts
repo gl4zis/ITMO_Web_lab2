@@ -3,6 +3,8 @@ export const table: HTMLTableElement = <HTMLTableElement> document.getElementByI
 export function addNewRow(rowHtml: string): void {
     const newRow: HTMLTableRowElement = table.insertRow(table.rows.length)
     newRow.innerHTML = rowHtml
+    const numberCell: HTMLTableCellElement = newRow.insertCell(0)
+    numberCell.innerText = String(table.rows.length-2)
 }
 
 export function resetTable(): void {

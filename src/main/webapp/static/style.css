@@ -111,11 +111,11 @@ input {
 }
 
 input#y.wrong, input#r.wrong {
-    border: 3px solid #F00;
+    border: 4px solid #F00;
 }
 
 input#y.right, input#r.right {
-    border: 3px solid #0F0;
+    border: 4px solid #0F0;
 }
 
 @keyframes blink {
@@ -127,7 +127,7 @@ input#y.right, input#r.right {
 input#y.blinking, input#r.blinking {
     animation: blink .4s;
     animation-iteration-count: 5;
-    border: 3px solid #EEE;
+    border: 4px solid #EEE;
 }
 
 table.results {

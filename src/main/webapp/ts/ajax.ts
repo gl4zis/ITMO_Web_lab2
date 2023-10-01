@@ -1,5 +1,5 @@
 import {paintGraph, paintNewDot} from "./canvas.js";
-import {addNewRow, getLastPoint, getPoint, resetTable} from "./table.js";
+import {addNewRow, getLastPoint, resetTable} from "./table.js";
 
 const reset: HTMLButtonElement = <HTMLButtonElement> document.getElementById('reset')
 
@@ -7,7 +7,7 @@ reset.addEventListener('click', function () {
     // @ts-ignore
     superagent
         .get('')
-        .query({delete: true})
+        .query({_method: 'delete'})
         .then(processReset)
         .catch(serverError)
     resetTable()
@@ -41,7 +41,7 @@ function serverError(error: object): void {
 function addHit(htmlTable: string): void {
     const table: HTMLTableElement = document.createElement('table')
     table.innerHTML = htmlTable
-    const newRowHtml: string = table.rows[table.rows.length-1].innerHTML
+    const newRowHtml: string = table.rows[0].innerHTML
     addNewRow(newRowHtml)
     paintNewDot(getLastPoint())
 }

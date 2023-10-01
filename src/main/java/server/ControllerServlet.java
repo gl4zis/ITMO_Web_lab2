@@ -12,9 +12,10 @@ public class ControllerServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         resp.setContentType("text/html");
+        String method = req.getParameter("_method");
         if (isPointSet(req))
             req.getRequestDispatcher("/areaCheck").forward(req, resp);
-        else if (Boolean.parseBoolean(req.getParameter("delete"))) {
+        else if (method != null && method.equalsIgnoreCase("delete")) {
             req.getSession().removeAttribute("table");
             req.getRequestDispatcher("/index.jsp").forward(req, resp);
         } else

@@ -21,8 +21,8 @@ public class AreaCheckServlet extends HttpServlet {
         String r = req.getParameter("R");
         try {
             Row newRow = HitService.getNewResult(x, y, r);
-            req.setAttribute("newRow", newRow);
-            req.getRequestDispatcher("/table.jsp").forward(req, resp);
+            req.setAttribute("row", newRow);
+            req.getRequestDispatcher("/result.jsp").forward(req, resp);
         } catch (InvalidPropertiesFormatException e) {
             resp.setStatus(400);
             resp.setHeader("X-Status-Reason", "Validation Failed");

@@ -5,7 +5,7 @@ reset.addEventListener('click', function () {
     // @ts-ignore
     superagent
         .get('')
-        .query({ delete: true })
+        .query({ _method: 'delete' })
         .then(processReset)
         .catch(serverError);
     resetTable();
@@ -34,7 +34,7 @@ function serverError(error) {
 function addHit(htmlTable) {
     const table = document.createElement('table');
     table.innerHTML = htmlTable;
-    const newRowHtml = table.rows[table.rows.length - 1].innerHTML;
+    const newRowHtml = table.rows[0].innerHTML;
     addNewRow(newRowHtml);
     paintNewDot(getLastPoint());
 }
