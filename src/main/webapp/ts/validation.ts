@@ -34,5 +34,12 @@ export function isYValid(): boolean {
 }
 
 export function validationError(): void {
-    console.error("Validation Error")
+    if (!isRValid()) {
+        rField.className = "blinking"
+        setTimeout(validateR, 2000)
+    }
+    if (!isYValid()) {
+        yField.className = "blinking"
+        setTimeout(validateY, 2000)
+    }
 }

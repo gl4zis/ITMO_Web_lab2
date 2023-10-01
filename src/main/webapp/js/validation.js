@@ -26,5 +26,12 @@ export function isYValid() {
     return numberRegex.test(yField.value) && yValue >= -3 && yValue <= 3;
 }
 export function validationError() {
-    console.error("Validation Error");
+    if (!isRValid()) {
+        rField.className = "blinking";
+        setTimeout(validateR, 2000);
+    }
+    if (!isYValid()) {
+        yField.className = "blinking";
+        setTimeout(validateY, 2000);
+    }
 }

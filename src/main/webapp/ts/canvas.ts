@@ -115,7 +115,8 @@ function sendClickCoords(event: MouseEvent): void {
         const y: number = (h / 2 - (event.clientY - rect.top)) * rValue / R
 
         processClick(x, y, rValue)
-    }
+    } else
+        validationError()
 }
 
 function processClick(x: number, y: number, r: number): void {

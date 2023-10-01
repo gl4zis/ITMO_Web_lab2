@@ -96,6 +96,8 @@ function sendClickCoords(event) {
         const y = (h / 2 - (event.clientY - rect.top)) * rValue / R;
         processClick(x, y, rValue);
     }
+    else
+        validationError();
 }
 function processClick(x, y, r) {
     if (validatePoint(x, y))
