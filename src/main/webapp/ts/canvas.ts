@@ -1,7 +1,7 @@
 import {isRValid, validatePoint, validationError} from "./validation.js";
 import {submit} from "./ajax.js";
 import {rField} from "./form.js";
-import {table} from "./table.js";
+import {getPoint, table} from "./table.js";
 
 const cv: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("canvas")
 const ctx: CanvasRenderingContext2D = <CanvasRenderingContext2D> cv.getContext('2d')
@@ -63,11 +63,11 @@ export function paintGraph(): void {
         ctx.font = 'bold ' + fontSize + 'pt Arial'
         ctx.fillText(String(-rValue), w / 2 - R - getNumLen(-rValue)/2,
             h / 2 - fontSize)
-        ctx.fillText(String(rValue/2), w / 2 + getNumLen(rValue/2),
+        ctx.fillText(String(rValue/2), w / 2 + fontSize,
             h / 2 - R / 2 + fontSize/2)
         ctx.fillText(String(rValue/2), w / 2 + R / 2 - getNumLen(rValue/2)/2,
             h / 2 - fontSize)
-        ctx.fillText(String(-rValue/2), w / 2 + getNumLen(-rValue/2),
+        ctx.fillText(String(-rValue/2), w / 2 + fontSize,
             h / 2 + R / 2 + fontSize/2)
         ctx.fillText(String(-rValue/2), w / 2 - R / 2 - getNumLen(-rValue/2)/2, h / 2 - fontSize)
         ctx.stroke()
@@ -82,13 +82,7 @@ export function paintGraph(): void {
 
 function paintAllDots(): void {
     for (let i: number = 2; i < table.rows.length; i++) {
-        const row: HTMLTableRowElement = table.rows[i]
-        const point: {x: number, y: number, hit: boolean} = {
-            x: parseFloat(row.cells[0].innerText),
-            y: parseFloat(row.cells[1].innerText),
-            hit: Boolean(row.cells[3].innerText)
-        }
-        paintNewDot(point)
+        paintNewDot(getPoint(i))
     }
 }
 

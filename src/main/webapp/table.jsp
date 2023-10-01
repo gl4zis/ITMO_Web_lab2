@@ -5,13 +5,15 @@
 <jsp:setProperty name="table" property="newRow" value="${newRow}"/>
 <table>
     <%
-        for (Row row : table) {
+        for (int i = 0; i < table.size(); i++) {
+            Row row = table.get(i);
     %>
     <tr>
+        <td><%= i+1%></td>
         <td><%= row.x()%></td>
         <td><%= row.y()%></td>
         <td><%= row.r()%></td>
-        <td><%= row.hit()%></td>
+        <td><%= row.formattedHit()%></td>
         <td><%= row.formattedDate()%></td>
         <td><%= row.time()%>ms</td>
     </tr>

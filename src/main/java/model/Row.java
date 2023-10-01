@@ -8,4 +8,7 @@ public record Row(double x, double y, double r, boolean hit, Date date, double t
     public String formattedDate() {
         return new SimpleDateFormat("yy-MM-dd hh:mm:ss zzz").format(date);
     }
+    public String formattedHit() {
+        return hit() ? "YES" : "NO";
+    }
 }

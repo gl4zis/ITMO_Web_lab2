@@ -1,7 +1,7 @@
 import { isRValid, validatePoint, validationError } from "./validation.js";
 import { submit } from "./ajax.js";
 import { rField } from "./form.js";
-import { table } from "./table.js";
+import { getPoint, table } from "./table.js";
 const cv = document.getElementById("canvas");
 const ctx = cv.getContext('2d');
 const h = cv.height;
@@ -52,9 +52,9 @@ export function paintGraph() {
         ctx.fillStyle = '#CCCCCC';
         ctx.font = 'bold ' + fontSize + 'pt Arial';
         ctx.fillText(String(-rValue), w / 2 - R - getNumLen(-rValue) / 2, h / 2 - fontSize);
-        ctx.fillText(String(rValue / 2), w / 2 + getNumLen(rValue / 2), h / 2 - R / 2 + fontSize / 2);
+        ctx.fillText(String(rValue / 2), w / 2 + fontSize, h / 2 - R / 2 + fontSize / 2);
         ctx.fillText(String(rValue / 2), w / 2 + R / 2 - getNumLen(rValue / 2) / 2, h / 2 - fontSize);
-        ctx.fillText(String(-rValue / 2), w / 2 + getNumLen(-rValue / 2), h / 2 + R / 2 + fontSize / 2);
+        ctx.fillText(String(-rValue / 2), w / 2 + fontSize, h / 2 + R / 2 + fontSize / 2);
         ctx.fillText(String(-rValue / 2), w / 2 - R / 2 - getNumLen(-rValue / 2) / 2, h / 2 - fontSize);
         ctx.stroke();
         paintAllDots();
@@ -65,13 +65,7 @@ export function paintGraph() {
 }
 function paintAllDots() {
     for (let i = 2; i < table.rows.length; i++) {
-        const row = table.rows[i];
-        const point = {
-            x: parseFloat(row.cells[0].innerText),
-            y: parseFloat(row.cells[1].innerText),
-            hit: Boolean(row.cells[3].innerText)
-        };
-        paintNewDot(point);
+        paintNewDot(getPoint(i));
     }
 }
 export function paintNewDot({ x, y, hit }) {
