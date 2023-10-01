@@ -102,7 +102,7 @@ input[type='text'], select, button {
     max-width: 200px;
 }
 
-td.reset {
+td.reset, td.back {
     text-align: center;
 }
 

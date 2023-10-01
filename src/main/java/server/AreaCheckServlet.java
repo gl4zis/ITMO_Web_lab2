@@ -21,7 +21,7 @@ public class AreaCheckServlet extends HttpServlet {
         String r = req.getParameter("R");
         try {
             Row newRow = HitService.getNewResult(x, y, r);
-            req.setAttribute("row", newRow);
+            req.setAttribute("newRow", newRow);
             req.getRequestDispatcher("/table.jsp").forward(req, resp);
         } catch (InvalidPropertiesFormatException e) {
             resp.setStatus(400);
