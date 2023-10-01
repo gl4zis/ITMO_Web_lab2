@@ -12,5 +12,5 @@ submitButton.addEventListener('click', function () {
         submit(x, y, r);
     }
     else
-        validationError();
+        validationError(true);
 });

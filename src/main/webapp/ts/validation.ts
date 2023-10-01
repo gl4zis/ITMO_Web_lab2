@@ -20,7 +20,10 @@ function validateY(): void {
 }
 
 export function validatePoint(x: number, y: number): boolean {
-    return isRValid() && !(y < -3 || y > 3 || x < -4 || x > 4);
+    const isValid: boolean = isRValid() && !(y < -3 || y > 3 || x < -4 || x > 4);
+    if (!isValid)
+        pointValidationError()
+    return isValid
 }
 
 export function isRValid(): boolean {
@@ -33,13 +36,19 @@ export function isYValid(): boolean {
     return numberRegex.test(yField.value) && yValue >= -3 && yValue <= 3
 }
 
-export function validationError(): void {
+export function validationError(needYBlink: boolean): void {
     if (!isRValid()) {
         rField.className = "blinking"
         setTimeout(validateR, 2000)
+        console.error("R is not valid")
     }
-    if (!isYValid()) {
+    if (needYBlink && !isYValid()) {
         yField.className = "blinking"
         setTimeout(validateY, 2000)
+        console.error("Y is not valid")
     }
+}
+
+function pointValidationError(): void {
+    console.error("Point is not valid")
 }

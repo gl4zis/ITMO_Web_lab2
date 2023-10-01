@@ -97,11 +97,9 @@ function sendClickCoords(event) {
         processClick(x, y, rValue);
     }
     else
-        validationError();
+        validationError(false);
 }
 function processClick(x, y, r) {
     if (validatePoint(x, y))
         submit(x, y, r);
-    else
-        validationError();
 }

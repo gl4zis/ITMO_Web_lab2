@@ -13,5 +13,5 @@ submitButton.addEventListener('click', function (): void {
         const r: number = parseFloat(rField.value.replace(',', '.'))
         submit(x, y, r)
     } else
-        validationError()
+        validationError(true)
 })

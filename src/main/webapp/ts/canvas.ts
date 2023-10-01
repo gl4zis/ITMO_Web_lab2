@@ -116,12 +116,10 @@ function sendClickCoords(event: MouseEvent): void {
 
         processClick(x, y, rValue)
     } else
-        validationError()
+        validationError(false)
 }
 
 function processClick(x: number, y: number, r: number): void {
     if (validatePoint(x, y))
         submit(x, y, r)
-    else
-        validationError()
 }
