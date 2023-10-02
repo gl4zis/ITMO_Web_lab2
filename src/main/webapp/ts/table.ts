@@ -4,11 +4,11 @@ export function addNewRow(rowHtml: string): void {
     const newRow: HTMLTableRowElement = table.insertRow(table.rows.length)
     newRow.innerHTML = rowHtml
     const numberCell: HTMLTableCellElement = newRow.insertCell(0)
-    numberCell.innerText = String(table.rows.length-2)
+    numberCell.innerText = String(table.rows.length)
 }
 
 export function resetTable(): void {
-    while (table.rows.length > 2)
+    while (table.rows.length > 0)
         table.deleteRow(-1)
 }
 

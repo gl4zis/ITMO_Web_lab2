@@ -3,10 +3,10 @@ export function addNewRow(rowHtml) {
     const newRow = table.insertRow(table.rows.length);
     newRow.innerHTML = rowHtml;
     const numberCell = newRow.insertCell(0);
-    numberCell.innerText = String(table.rows.length - 2);
+    numberCell.innerText = String(table.rows.length);
 }
 export function resetTable() {
-    while (table.rows.length > 2)
+    while (table.rows.length > 0)
         table.deleteRow(-1);
 }
 export function getPoint(index) {

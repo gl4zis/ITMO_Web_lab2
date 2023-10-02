@@ -81,7 +81,7 @@ export function paintGraph(): void {
 }
 
 function paintAllDots(): void {
-    for (let i: number = 2; i < table.rows.length; i++) {
+    for (let i: number = 0; i < table.rows.length; i++) {
         paintNewDot(getPoint(i))
     }
 }

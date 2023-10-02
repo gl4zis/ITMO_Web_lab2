@@ -83,38 +83,44 @@
         </tr>
         <tr>
             <td>
-                <table id="res-table" class="results mh-center">
-                    <tr>
-                        <th colspan="7">
-                            <h3>Results:</h3>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>№</td>
-                        <td>X</td>
-                        <td>Y</td>
-                        <td>R</td>
-                        <td>Hit</td>
-                        <td>Time</td>
-                        <td>Time of work</td>
-                    </tr>
-                    <%
-                        for (int i = 0; i < table.size(); i++) {
-                            Row row = table.get(i);
-                    %>
-                    <tr>
-                        <td><%= i+1%></td>
-                        <td><%= row.x()%></td>
-                        <td><%= row.y()%></td>
-                        <td><%= row.r()%></td>
-                        <td><%= row.formattedHit()%></td>
-                        <td><%= row.formattedDate()%></td>
-                        <td><%= row.time()%>ms</td>
-                    </tr>
-                    <%
-                        }
-                    %>
-                </table>
+                <div class="scroll-table mh-center">
+                    <table class="results mh-center">
+                        <tr>
+                            <th colspan="7">
+                                <h3>Results:</h3>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>№</td>
+                            <td>X</td>
+                            <td>Y</td>
+                            <td>R</td>
+                            <td>Hit</td>
+                            <td>Time</td>
+                            <td>Time of work</td>
+                        </tr>
+                    </table>
+                    <div class="scroll-table-body">
+                        <table id="res-table" class="results mh-center">
+                            <%
+                                for (int i = 0; i < table.size(); i++) {
+                                    Row row = table.get(i);
+                            %>
+                            <tr>
+                                <td><%= i+1%></td>
+                                <td><%= row.x()%></td>
+                                <td><%= row.y()%></td>
+                                <td><%= row.r()%></td>
+                                <td><%= row.formattedHit()%></td>
+                                <td><%= row.formattedDate()%></td>
+                                <td><%= row.time()%>ms</td>
+                            </tr>
+                            <%
+                                }
+                            %>
+                        </table>
+                    </div>
+                </div>
             </td>
         </tr>
         <tr>
