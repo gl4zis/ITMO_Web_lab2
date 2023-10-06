@@ -40,6 +40,10 @@ aside#alerts {
     z-index: 2;
 }
 
+aside#alerts > * {
+    position: sticky;
+}
+
 section#header {
     width: 25%;
 }

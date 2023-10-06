@@ -1,4 +1,5 @@
 import {rField, yField} from "./form.js";
+import {addAlert} from "./alerts.js";
 
 const numberRegex: RegExp = /^-?\d([\.,]\d{1,2})?$/
 
@@ -40,15 +41,15 @@ export function validationError(needYBlink: boolean): void {
     if (!isRValid()) {
         rField.className = "blinking"
         setTimeout(validateR, 2000)
-        console.error("R is not valid")
+        addAlert("warning", "R is not valid")
     }
     if (needYBlink && !isYValid()) {
         yField.className = "blinking"
         setTimeout(validateY, 2000)
-        console.error("Y is not valid")
+        addAlert("warning", "Y is not valid")
     }
 }
 
 function pointValidationError(): void {
-    console.error("Point is not valid")
+    addAlert("warning", "Point is not valid")
 }

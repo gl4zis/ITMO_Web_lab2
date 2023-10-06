@@ -1,5 +1,6 @@
 import { paintGraph, paintNewDot } from "./canvas.js";
 import { addNewRow, getLastPoint, resetTable } from "./table.js";
+import { addAlert } from "./alerts.js";
 const reset = document.getElementById('reset');
 reset.addEventListener('click', function () {
     // @ts-ignore
@@ -12,7 +13,7 @@ reset.addEventListener('click', function () {
     paintGraph();
 });
 function processReset() {
-    console.log('Successfully deleted');
+    addAlert("success", "Table was successfully reset");
 }
 export function submit(x, y, r) {
     // @ts-ignore
@@ -26,10 +27,10 @@ function processResponse(response) {
     if (response.status === 200)
         addHit(String(response.text));
     else
-        serverError(response.headers);
+        serverError(response);
 }
 function serverError(error) {
-    console.error(error);
+    addAlert("warning", String(error));
 }
 function addHit(htmlTable) {
     const table = document.createElement('table');

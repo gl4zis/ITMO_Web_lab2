@@ -1,0 +1,38 @@
+.alert {
+    width: 512px;
+    padding: 16px;
+    margin: 8px;
+    max-width: 100%;
+}
+
+.alert.success {
+    border-left: 4px solid #2ec946;
+    background-color: #2ec9460D;
+}
+
+.alert.warning {
+    border-left: 4px solid #ff3838;
+    background-color: #ff38380D;
+}
+
+.alert .title {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+}
+
+.alert.success .title {
+    color: #2ec946;
+}
+
+.alert.warning .title {
+    color: #ff3838;
+}
+
+.alert .content {
+    margin: 0;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    color: #555;
+}

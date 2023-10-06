@@ -12,8 +12,10 @@
     <script src="./js/ajax.js" type="module"></script>
     <script src="./js/table.js" type="module"></script>
     <script src="./js/form.js" type="module"></script>
+    <script src="./js/alerts.js" type="module"></script>
 
     <link href="static/style.css" rel="stylesheet"/>
+    <link href="static/alert.css" rel="stylesheet"/>
     <meta charset="UTF-8">
     <title>LaboratoryWork2</title>
 </head>

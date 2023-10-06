@@ -1,4 +1,5 @@
 import { rField, yField } from "./form.js";
+import { addAlert } from "./alerts.js";
 const numberRegex = /^-?\d([\.,]\d{1,2})?$/;
 rField.addEventListener('input', validateR);
 yField.addEventListener('input', validateY);
@@ -32,14 +33,14 @@ export function validationError(needYBlink) {
     if (!isRValid()) {
         rField.className = "blinking";
         setTimeout(validateR, 2000);
-        console.error("R is not valid");
+        addAlert("warning", "R is not valid");
     }
     if (needYBlink && !isYValid()) {
         yField.className = "blinking";
         setTimeout(validateY, 2000);
-        console.error("Y is not valid");
+        addAlert("warning", "Y is not valid");
     }
 }
 function pointValidationError() {
-    console.error("Point is not valid");
+    addAlert("warning", "Point is not valid");
 }
