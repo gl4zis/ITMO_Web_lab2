@@ -1,5 +1,5 @@
 VANTA.NET({
-    el: "body",
+    el: "main",
     mouseControls: true,
     touchControls: true,
     gyroControls: false,

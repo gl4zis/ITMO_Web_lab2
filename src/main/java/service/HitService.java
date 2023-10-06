@@ -5,7 +5,7 @@ import model.Row;
 import java.util.Date;
 import java.util.InvalidPropertiesFormatException;
 
-public class HitService {
+public abstract class HitService {
 
     public static Row getNewResult(String x, String y, String r) throws InvalidPropertiesFormatException {
         long startTime = System.nanoTime();
