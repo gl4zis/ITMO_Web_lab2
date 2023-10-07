@@ -45,7 +45,7 @@ function serverError(): void {
 function addHit(htmlTable: string): void {
     const table: HTMLTableElement = document.createElement('table')
     table.innerHTML = htmlTable
-    const newRowHtml: string = table.rows[0].innerHTML
+    const newRowHtml: string = table.rows[table.rows.length-1].innerHTML
     addNewRow(newRowHtml)
     paintNewDot(getLastPoint())
 }

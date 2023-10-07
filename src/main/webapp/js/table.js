@@ -2,8 +2,6 @@ export const table = document.getElementById('res-table');
 export function addNewRow(rowHtml) {
     const newRow = table.insertRow(table.rows.length);
     newRow.innerHTML = rowHtml;
-    const numberCell = newRow.insertCell(0);
-    numberCell.innerText = String(table.rows.length);
 }
 export function resetTable() {
     while (table.rows.length > 0)

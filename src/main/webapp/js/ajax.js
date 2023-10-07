@@ -38,7 +38,7 @@ function serverError() {
 function addHit(htmlTable) {
     const table = document.createElement('table');
     table.innerHTML = htmlTable;
-    const newRowHtml = table.rows[0].innerHTML;
+    const newRowHtml = table.rows[table.rows.length - 1].innerHTML;
     addNewRow(newRowHtml);
     paintNewDot(getLastPoint());
 }

@@ -23,7 +23,7 @@ new MutationObserver(() => {
     if (len > 4)
         stack.removeChild(alerts[0]);
     let topSum = window.innerHeight - 25;
-    alerts.forEach((alert) => {
+    alerts.reverse().forEach((alert) => {
         topSum -= (15 + alert.clientHeight);
         alert.style.top = String(topSum) + "px";
     });

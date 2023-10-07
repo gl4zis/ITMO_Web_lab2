@@ -17,6 +17,11 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
+war {
+
+    rootSpec.exclude('**/ts/')
+}
+
 tasks.test {
     useJUnitPlatform()
 }
