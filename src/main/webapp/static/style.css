@@ -66,33 +66,31 @@ section#form {
     width: 60%;
     font-size: 14pt;
     font-style: italic;
-}
-
-.inputs {
-    width: 60%;
-}
-
-.inputs, #canvas {
-    display: inline-block;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 label {
     display: block;
 }
 
-.inputs div, .inputs button {
-    margin: 5% 2%;
-    display: inline-block;
-}
-
-.inputs div, #canvas {
+.graph, .inputs div {
     background: #111A;
     border-radius: 30px;
-    text-align: center;
+    padding: 5%;
 }
 
-.inputs div {
-    padding: 5%;
+.graph {
+    height: 70%;
+    line-height: 70%;
+}
+
+.inputs {
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 input, select {

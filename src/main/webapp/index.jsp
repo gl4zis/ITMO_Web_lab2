@@ -62,9 +62,11 @@
                 </div>
                 <button class="mv-center" id="submit" type="submit">Submit</button>
             </div>
-            <canvas id="canvas" height="250px" width="250px">
-                Here could be your ad
-            </canvas>
+            <div class="graph">
+               <canvas id="canvas" height="250px" width="250px">
+                   Here could be your ad
+               </canvas>
+            </div>
         </section>
         <section id="results" class="mh-center">
         <div class="scroll-table mh-center">
