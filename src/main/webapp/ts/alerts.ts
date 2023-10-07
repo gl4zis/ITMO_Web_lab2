@@ -14,8 +14,9 @@ export function addAlert(type: alertType, message: string): void {
     alert.append(title, text)
     stack.appendChild(alert)
 
-    function removeAlert(): void{
-        stack.removeChild(alert)
+    function removeAlert(): void {
+        if (Array.from(stack.children).indexOf(alert) !== -1)
+            stack.removeChild(alert)
     }
 
     setTimeout(removeAlert, 5000)
@@ -23,6 +24,14 @@ export function addAlert(type: alertType, message: string): void {
 }
 
 new MutationObserver((): void => {
-    for (let i: number = 0; i < stack.children.length; i++)
-        (<HTMLDivElement> stack.children[i]).style.top = String(20 + i * 86) + "px"
+    const len: number = stack.children.length
+    const alerts: HTMLDivElement[] = <HTMLDivElement[]> Array.from(stack.children)
+    if (len > 4)
+        stack.removeChild(alerts[0])
+    let topSum: number = window.innerHeight - 25;
+    for (let i: number = 0; i < len; i++) {
+        const alert: HTMLDivElement = <HTMLDivElement> alerts[i]
+        topSum -= (15 + alert.clientHeight)
+        alert.style.top = String(topSum) + "px"
+    }
 }).observe(stack, {childList: true})

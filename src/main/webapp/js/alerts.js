@@ -11,12 +11,21 @@ export function addAlert(type, message) {
     alert.append(title, text);
     stack.appendChild(alert);
     function removeAlert() {
-        stack.removeChild(alert);
+        if (Array.from(stack.children).indexOf(alert) !== -1)
+            stack.removeChild(alert);
     }
     setTimeout(removeAlert, 5000);
     alert.onclick = removeAlert;
 }
 new MutationObserver(() => {
-    for (let i = 0; i < stack.children.length; i++)
-        stack.children[i].style.top = String(20 + i * 86) + "px";
+    const len = stack.children.length;
+    const alerts = Array.from(stack.children);
+    if (len > 4)
+        stack.removeChild(alerts[0]);
+    let topSum = window.innerHeight - 25;
+    for (let i = 0; i < len; i++) {
+        const alert = alerts[i];
+        topSum -= (15 + alert.clientHeight);
+        alert.style.top = String(topSum) + "px";
+    }
 }).observe(stack, { childList: true });
