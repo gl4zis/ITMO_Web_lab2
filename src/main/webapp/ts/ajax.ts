@@ -1,6 +1,7 @@
 import {paintGraph, paintNewDot} from "./canvas.js";
 import {addNewRow, getLastPoint, resetTable} from "./table.js";
 import {addAlert} from "./alerts.js";
+import {Form} from "./form";
 
 const reset: HTMLButtonElement = <HTMLButtonElement> document.getElementById('reset')
 
@@ -21,10 +22,10 @@ function processReset(): void {
     addAlert("success", "Table was successfully reset")
 }
 
-export function submit(x: number, y: number, r: number): void {
-    const roundX: number = +x.toFixed(3)
-    const roundY: number = +y.toFixed(3)
-    const roundR: number = +r.toFixed(3)
+export function submit(data: Form): void {
+    const roundX: number = +data.x.toFixed(3)
+    const roundY: number = +data.y.toFixed(3)
+    const roundR: number = +data.r.toFixed(3)
     const url: string = document.URL + "/?X=" + roundX + "&Y=" + roundY + "&R=" + roundR
     fetch(url)
         .then((response: Response): Promise<string> => {

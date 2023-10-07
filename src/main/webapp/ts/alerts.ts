@@ -29,9 +29,8 @@ new MutationObserver((): void => {
     if (len > 4)
         stack.removeChild(alerts[0])
     let topSum: number = window.innerHeight - 25;
-    for (let i: number = 0; i < len; i++) {
-        const alert: HTMLDivElement = <HTMLDivElement> alerts[i]
+    alerts.forEach((alert: HTMLDivElement): void => {
         topSum -= (15 + alert.clientHeight)
         alert.style.top = String(topSum) + "px"
-    }
+    })
 }).observe(stack, {childList: true})

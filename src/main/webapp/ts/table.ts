@@ -1,3 +1,5 @@
+import {Point} from "./canvas";
+
 export const table: HTMLTableElement = <HTMLTableElement> document.getElementById('res-table')
 
 export function addNewRow(rowHtml: string): void {
@@ -12,7 +14,7 @@ export function resetTable(): void {
         table.deleteRow(-1)
 }
 
-export function getPoint(index: number): {x: number, y: number, hit: boolean} {
+export function getPoint(index: number): Point {
     const row: HTMLTableRowElement = table.rows[index]
     return {
         x: parseFloat(row.cells[1].innerText.replace(',', '.')),
@@ -21,6 +23,6 @@ export function getPoint(index: number): {x: number, y: number, hit: boolean} {
     }
 }
 
-export function getLastPoint(): {x: number, y: number, hit: boolean} {
+export function getLastPoint(): Point {
     return getPoint(table.rows.length-1)
 }

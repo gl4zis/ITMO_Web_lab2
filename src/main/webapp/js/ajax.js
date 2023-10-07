@@ -17,10 +17,10 @@ function processReset() {
     paintGraph();
     addAlert("success", "Table was successfully reset");
 }
-export function submit(x, y, r) {
-    const roundX = +x.toFixed(3);
-    const roundY = +y.toFixed(3);
-    const roundR = +r.toFixed(3);
+export function submit(data) {
+    const roundX = +data.x.toFixed(3);
+    const roundY = +data.y.toFixed(3);
+    const roundR = +data.r.toFixed(3);
     const url = document.URL + "/?X=" + roundX + "&Y=" + roundY + "&R=" + roundR;
     fetch(url)
         .then((response) => {

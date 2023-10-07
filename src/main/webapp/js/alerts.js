@@ -23,9 +23,8 @@ new MutationObserver(() => {
     if (len > 4)
         stack.removeChild(alerts[0]);
     let topSum = window.innerHeight - 25;
-    for (let i = 0; i < len; i++) {
-        const alert = alerts[i];
+    alerts.forEach((alert) => {
         topSum -= (15 + alert.clientHeight);
         alert.style.top = String(topSum) + "px";
-    }
+    });
 }).observe(stack, { childList: true });

@@ -1,6 +1,11 @@
 import {isRValid, isYValid, validationError} from "./validation.js";
 import {submit} from "./ajax.js";
 
+export type Form = {
+    x: number,
+    y: number,
+    r: number
+}
 export const yField: HTMLInputElement = <HTMLInputElement> document.getElementById('y')
 const xField: HTMLInputElement = <HTMLInputElement> document.getElementById('x')
 export const rField: HTMLInputElement = <HTMLInputElement> document.getElementById('r')
@@ -11,7 +16,7 @@ submitButton.addEventListener('click', function (): void {
         const x: number = Number(xField.value)
         const y: number = parseFloat(yField.value.replace(',', '.'))
         const r: number = parseFloat(rField.value.replace(',', '.'))
-        submit(x, y, r)
+        submit({x, y, r})
     } else
         validationError(true)
 })

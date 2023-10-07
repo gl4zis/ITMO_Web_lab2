@@ -9,7 +9,7 @@ submitButton.addEventListener('click', function () {
         const x = Number(xField.value);
         const y = parseFloat(yField.value.replace(',', '.'));
         const r = parseFloat(rField.value.replace(',', '.'));
-        submit(x, y, r);
+        submit({ x, y, r });
     }
     else
         validationError(true);
