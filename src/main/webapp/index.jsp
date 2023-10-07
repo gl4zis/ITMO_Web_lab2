@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <script src="./js_modules/superagent.js"></script>
     <script src="./js_modules/three.r134.min.js"></script>
     <script src="./js_modules/vanta.net.min.js"></script>
     <script src="./js_modules/myVanta.js" defer></script>

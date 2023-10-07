@@ -3,34 +3,37 @@ import { addNewRow, getLastPoint, resetTable } from "./table.js";
 import { addAlert } from "./alerts.js";
 const reset = document.getElementById('reset');
 reset.addEventListener('click', function () {
-    // @ts-ignore
-    superagent
-        .get('')
-        .query({ _method: 'delete' })
+    const url = document.URL + "/?_method=delete";
+    fetch(url)
+        .then((response) => {
+        if (response.status !== 200)
+            return Promise.reject();
+    })
         .then(processReset)
         .catch(serverError);
-    resetTable();
-    paintGraph();
 });
 function processReset() {
+    resetTable();
+    paintGraph();
     addAlert("success", "Table was successfully reset");
 }
 export function submit(x, y, r) {
-    // @ts-ignore
-    superagent
-        .get('')
-        .query({ X: +x.toFixed(3), Y: +y.toFixed(3), R: +r.toFixed(3) })
-        .then(processResponse)
+    const roundX = +x.toFixed(3);
+    const roundY = +y.toFixed(3);
+    const roundR = +r.toFixed(3);
+    const url = document.URL + "/?X=" + roundX + "&Y=" + roundY + "&R=" + roundR;
+    fetch(url)
+        .then((response) => {
+        if (response.status === 200)
+            return response.text();
+        else
+            return Promise.reject(response);
+    })
+        .then(addHit)
         .catch(serverError);
 }
-function processResponse(response) {
-    if (response.status === 200)
-        addHit(String(response.text));
-    else
-        serverError(response);
-}
-function serverError(error) {
-    addAlert("warning", String(error));
+function serverError() {
+    addAlert("warning", "No connection with web-server");
 }
 function addHit(htmlTable) {
     const table = document.createElement('table');

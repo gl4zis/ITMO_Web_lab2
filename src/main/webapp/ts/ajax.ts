@@ -5,38 +5,40 @@ import {addAlert} from "./alerts.js";
 const reset: HTMLButtonElement = <HTMLButtonElement> document.getElementById('reset')
 
 reset.addEventListener('click', function () {
-    // @ts-ignore
-    superagent
-        .get('')
-        .query({_method: 'delete'})
+    const url: string = document.URL + "/?_method=delete"
+    fetch(url)
+        .then((response: Response) => {
+            if (response.status !== 200)
+                return Promise.reject()
+        })
         .then(processReset)
         .catch(serverError)
-    resetTable()
-    paintGraph()
 })
 
 function processReset(): void {
+    resetTable()
+    paintGraph()
     addAlert("success", "Table was successfully reset")
 }
 
 export function submit(x: number, y: number, r: number): void {
-    // @ts-ignore
-    superagent
-        .get('')
-        .query({X: +x.toFixed(3), Y: +y.toFixed(3), R: +r.toFixed(3)})
-        .then(processResponse)
+    const roundX: number = +x.toFixed(3)
+    const roundY: number = +y.toFixed(3)
+    const roundR: number = +r.toFixed(3)
+    const url: string = document.URL + "/?X=" + roundX + "&Y=" + roundY + "&R=" + roundR
+    fetch(url)
+        .then((response: Response): Promise<string> => {
+            if (response.status === 200)
+                return response.text()
+            else
+                return Promise.reject(response)
+        })
+        .then(addHit)
         .catch(serverError)
 }
 
-function processResponse(response: Response): void {
-    if (response.status === 200)
-        addHit(String(response.text))
-    else
-        serverError(response)
-}
-
-function serverError(error: Response): void {
-    addAlert("warning", String(error))
+function serverError(): void {
+    addAlert("warning", "No connection with web-server")
 }
 
 function addHit(htmlTable: string): void {
