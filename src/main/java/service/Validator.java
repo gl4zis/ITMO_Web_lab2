@@ -7,6 +7,7 @@ public abstract class Validator {
             double xDouble = Double.parseDouble(x);
             double yDouble = Double.parseDouble(y);
             double rDouble = Double.parseDouble(r);
+
             return validX(xDouble) && validY(yDouble) && validR(rDouble);
         } catch (NumberFormatException e) {
             return false;

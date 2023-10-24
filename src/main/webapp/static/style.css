@@ -135,8 +135,10 @@ input#y.blinking, input#r.blinking {
 }
 
 .scroll-table {
+    min-width: 600px;
     background: #222D;
     width: 40%;
+    font-size: 12px;
 }
 
 .scroll-table table{
@@ -154,7 +156,6 @@ input#y.blinking, input#r.blinking {
 
 .scroll-table td {
     text-align: left;
-    vertical-align: center;
 }
 
 .scroll-table-body {

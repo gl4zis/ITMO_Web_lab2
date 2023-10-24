@@ -20,6 +20,7 @@ public class AreaCheckServlet extends HttpServlet {
         String x = req.getParameter("X");
         String y = req.getParameter("Y");
         String r = req.getParameter("R");
+
         try {
             Row row = HitService.getNewResult(x, y, r);
             ((Table) req.getSession().getAttribute("table")).setNewRow(row);

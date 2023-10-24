@@ -3,10 +3,10 @@ import { addNewRow, getLastPoint, resetTable } from "./table.js";
 import { addAlert } from "./alerts.js";
 const reset = document.getElementById('reset');
 reset.addEventListener('click', function () {
-    const url = document.URL + "/?_method=delete";
-    fetch(url)
+    const url = document.URL;
+    fetch(url, { method: 'DELETE' })
         .then((response) => {
-        if (response.status !== 200)
+        if (!response.ok)
             return Promise.reject();
     })
         .then(processReset)
@@ -21,10 +21,10 @@ export function submit(data) {
     const roundX = +data.x.toFixed(3);
     const roundY = +data.y.toFixed(3);
     const roundR = +data.r.toFixed(3);
-    const url = document.URL + "/?X=" + roundX + "&Y=" + roundY + "&R=" + roundR;
+    const url = document.URL + "?X=" + roundX + "&Y=" + roundY + "&R=" + roundR;
     fetch(url)
         .then((response) => {
-        if (response.status === 200)
+        if (response.ok)
             return response.text();
         else
             return Promise.reject(response);
